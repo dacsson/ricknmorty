@@ -1,0 +1,21 @@
+{
+  "name": "rickmorty",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "npm run gen && nodemon ./src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gen": "node ./swagger/index.js"
+  },
+  "author": "artjom",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "pg": "^8.12.0",
+    "swagger-autogen": "^2.23.7",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  }
+}

@@ -1,0 +1,231 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Rickmorty API",
+    "description": "Wowzers",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/characters/{id}": {
+      "get": {
+        "description": "Найти персонажа по ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/characters/": {
+      "get": {
+        "description": "Показать всех персонажей",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/characters/load": {
+      "post": {
+        "description": "Загрузить персонажей в базу данных",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/db/view/{name}": {
+      "get": {
+        "description": "Вывести все записи из таблицы",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/db/check_conn": {
+      "get": {
+        "description": "Проверить соединение с БД",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/db/drop_table/{name}": {
+      "post": {
+        "description": "Удалить таблицу",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/db/truncate_table/{name}": {
+      "post": {
+        "description": "Очистить таблицу",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/db/create": {
+      "get": {
+        "description": "Создать таблицу персонажей",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Character": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "1"
+        },
+        "name": {
+          "type": "string",
+          "example": "Rick"
+        },
+        "status": {
+          "type": "string",
+          "example": "Alive"
+        },
+        "species": {
+          "type": "string",
+          "example": "Human"
+        },
+        "type": {
+          "type": "string",
+          "example": ""
+        },
+        "gender": {
+          "type": "string",
+          "example": "Male"
+        },
+        "origin": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "example": "Earth (C-137)"
+            },
+            "url": {
+              "type": "string",
+              "example": ""
+            }
+          }
+        },
+        "location": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "example": "Citadel of Ricks"
+            },
+            "url": {
+              "type": "string",
+              "example": ""
+            }
+          }
+        },
+        "image": {
+          "type": "string",
+          "example": ""
+        },
+        "episode": {
+          "type": "array",
+          "example": [],
+          "items": {}
+        },
+        "url": {
+          "type": "string",
+          "example": ""
+        },
+        "created": {
+          "type": "string",
+          "example": ""
+        }
+      }
+    },
+    "Characters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Character"
+      }
+    }
+  }
+}
